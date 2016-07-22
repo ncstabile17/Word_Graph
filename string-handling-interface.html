@@ -35,25 +35,7 @@ document.querySelector("#myfiles").onchange=pullfiles;
 //a.t
 </script>
 
-<script>
-var openFile = function(event) {
-        var input = event.target;
 
-        var reader = new FileReader();
-        reader.onload = function(){
-          var text = reader.result;
-          var node = document.getElementById('output');
-          node.innerText = text;
-          console.log(reader.result.substring(0, 200));
-        };
-        reader.readAsText(input.files[0]);
-      };
-</script>
-
-<p> Look at the alert! </p>
-<div id = 'output'>
-
-</div>
 
 <script>
 var str = "This is a string? with .some weird !punctuation isn't it weird?";

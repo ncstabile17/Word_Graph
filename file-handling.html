@@ -18,7 +18,8 @@
           var node = document.getElementById('output');
           //node.innerText = "Chapter One array: " + chapters[1];
           var strArray = chapters[1];
-         countWords(strArray);
+          var wordCount = countWords(strArray);
+          printMaxNoCommon(wordCount.count, wordCount.words);
 
           
         };
@@ -35,5 +36,6 @@
     <div id='output2'></div>
     <div id='words'>
     </div>
+    <div id='maxWords'></div>
     </body>
     </html>

@@ -1,0 +1,81 @@
+<html>
+    <head>
+    <script>
+      var openFile = function(event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function(){
+          var str = reader.result;
+          var chapArray = str.toLowerCase().split(/chapter/);
+          var chapters = new Array(chapArray.length);
+          
+          chapArray.forEach(function (element, index, array) {
+            chapters[index] = element.replace(/[^a-zA-Z '\n]/g, '').split(/\s+/);
+          })
+          
+         // str = str.replace(/[^a-zA-Z '\n]/g, '').toLowerCase().split(/\s+/);
+          
+          var node = document.getElementById('output');
+          //node.innerText = "Chapter One array: " + chapters[1];
+          var strArray = chapters[1];
+         countWords(strArray);
+
+         function Word(value, count) {
+            this.value = value;
+            this.count = count;
+         };
+
+          function countWords(stringArray){
+
+            var words = [];
+            var count = [];
+            
+            stringArray.forEach(function (element, index, array) {
+              if (words.indexOf(element) == -1) {
+                console.log("In loop with element: " + element);
+                words.push(element);
+                count.push(1);
+              }
+              else
+              {
+                var idx = words.indexOf(element);
+                count[idx] += 1;
+              }
+            })
+
+            function getMaxOfArray(numArray) {
+              return Math.max.apply(null, numArray);
+            }
+            var max = getMaxOfArray(count);
+            var maxIdx = count.indexOf(max);
+            var maxWord = words[maxIdx];
+            var wordoutput = document.getElementById('output2');
+            wordoutput.innerText = "The word that appeared the most times was: '" + maxWord + "' which appeared: " + max + " times.";
+
+
+            words.forEach(function (element, index, array) {
+            var idx2 = words.indexOf(element);
+            var numCount = count[idx2];
+            var node2 = document.getElementById('words');
+            node2.innerText += element + " appeared: " + numCount + " times. \n"; 
+          })
+
+          };
+          
+        };
+        reader.readAsText(input.files[0]);
+
+        
+      };
+    </script>
+    </head>
+    <body>
+    <input type='file' accept='text/plain' onchange='openFile(event)'><br>
+    <div id='output'>
+    </div>
+    <div id='output2'></div>
+    <div id='words'>
+    </div>
+    </body>
+    </html>

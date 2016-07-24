@@ -10,7 +10,7 @@ function countWords(stringArray){
 // count array by one 
   stringArray.forEach(function (element, index, array) {
     if (words.indexOf(element) == -1) {
-      console.log("In loop with element: " + element);
+      //console.log("In loop with element: " + element);
       words.push(element);
       count.push(1);
     }

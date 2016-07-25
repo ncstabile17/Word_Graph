@@ -62,6 +62,8 @@
           //is an array containing the words in that chapter
           //chapters is a string array with each word being its own element
           var chapArray = str.split(/CHAPTER/);
+          console.log(chapArray);
+          //console.log(chapArray);
           var chapters = new Array(chapArray.length);
           
           chapArray.forEach(function (element, index, array) {
@@ -210,7 +212,7 @@ function makeGraph(xLabels, datasets) {
                         },
                         ticks: {
                             suggestedMin: 0,
-                            suggestedMax: 10,
+                            suggestedMax: 5,
                         }
                     }]
                 }

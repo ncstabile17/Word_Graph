@@ -36,7 +36,8 @@
     <div id="numWords"></div><br>
     </div>
         <button onclick="getGraph()"> Click to graph words! </button>
-        <div id="error"></div>
+        <div id="error"></div><br>
+    <div id="maxWords"></div>
   </div>
     
 
@@ -78,12 +79,17 @@
             xLabels.push(current);
           }
 
+          var strArray = [];
+
+          for (var t = 0; t < chapters.length; t++) {
+              strArray = strArray.concat(chapters[t]);
+          }
+          console.log(strArray);
           
           var node = document.getElementById('output');
           //node.innerText = "Chapter One array: " + chapters[1];
-          var strArray = chapters[1];
-          //var wordCount = countWords(strArray);
-          //printMaxNoCommon(wordCount.count, wordCount.words);
+          var wordCount = countWords(strArray);
+          printMaxNoCommon(wordCount.count, wordCount.words, 50);
 
           var wordInput = document.getElementById('wordInput').value;
           wordInput = wordInput.toString().toLowerCase().split(/, */);
@@ -165,7 +171,7 @@ function makeGraph(xLabels, datasets) {
                 responsive: true,
                 title:{
                     display:true,
-                    text:'Chart.js Line Chart'
+                    text:'Chronological Word Graph'
                 },
                 tooltips: {
                     mode: 'label',

@@ -8,7 +8,7 @@
 
     <style>
     .center {
-      margin: auto;
+      margin: 0px auto;
       text-align: center;
     }
     canvas{
@@ -16,6 +16,27 @@
         -webkit-user-select: none;
         -ms-user-select: none;
     }
+
+    * {
+       margin: 0; 
+       padding: 0;
+     }
+
+     div#banner { 
+       position: absolute; 
+       top: 0; 
+       left: 0; 
+       background-color: #DDEEEE; 
+       width: 100%; 
+     }
+     div#banner-content {  
+       margin: auto; 
+       padding: 10px; 
+     }
+     body {
+      background-image: url("background-imager/Elegant_Background-7.jpg");
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+     }
     </style>
     
     </head>
@@ -23,8 +44,14 @@
       <div style="width:97%;">
         <canvas id="canvas" ></canvas>
     </div>
+    <div id="banner">
+    <div id="banner-content">
+   <h4> Nick Stabile - Literature and Technology Final Project </h4>
+    </div>
+  </div>
   <div class="center">
-    <h1> Welcome to the Frankenstein Word Graph! </h1>
+    <img src="frankenimage.jpeg" id="frankenimage" height="300" alt="frankenimage"> <br>
+    <h1> Welcome to the Frankenstein Word Graph! </h1><br>
     <p> To begin, please select a text file of a book containing chapters: <br> </p>
     <input type='file' accept='text/plain' id="inputFile" multiple><br> <br>
     <div>
@@ -140,6 +167,7 @@
           
         };
         if (input != null) {
+          document.getElementById('frankenimage').style.height=0;
           reader.readAsText(input);
 
           }

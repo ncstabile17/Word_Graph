@@ -1,0 +1,81 @@
+<html>
+    <head>
+      <title>Line Chart</title>
+    <script src="chart.js/dist/Chart.bundle.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="string-handling.js" ></script>
+    <script src="create-graph.js"></script>
+    <script src="file-handling.js"></script>
+    
+
+    <style>
+    .center {
+      margin: 0px auto;
+      text-align: center;
+    }
+    canvas{
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    * {
+       margin: 0; 
+       padding: 0;
+     }
+
+     div#banner { 
+       position: absolute; 
+       top: 0; 
+       left: 0; 
+       background-color: #DDEEEE; 
+       width: 100%; 
+     }
+     div#banner-content {  
+       margin: auto; 
+       padding: 10px; 
+     }
+     body {
+      background-image: url("background-imager/Elegant_Background-7.jpg");
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+     }
+    </style>
+    
+    </head>
+    <body>
+      <div style="width:97%;">
+        <canvas id="canvas" ></canvas>
+    </div>
+    <div id="banner">
+    <div id="banner-content">
+   <h4> Nick Stabile - Literature and Technology Final Project </h4>
+    </div>
+  </div>
+  <div class="center">
+    <img src="frankenimage.jpeg" id="frankenimage" height="300" alt="frankenimage"> <br>
+    <h1> Welcome to the Frankenstein Word Graph! </h1><br>
+    <p> To begin, please select a text file of a book containing chapters: <br> </p>
+    <input type='file' accept='text/plain' id="inputFile" multiple><br> <br>
+    <div>
+    <form>
+      Enter the word(s) you'd like to graph: <br><br>
+      <input type="text" value="Frankenstein" id="wordInput">
+      <br>
+    </form>
+    <div id="numWords"></div><br>
+    </div>
+        <button onclick="getGraph()"> Click to graph words! </button>
+        <div id="error"></div>
+  </div>
+    
+
+    <script>
+    
+
+ //window.onload = makeGraph;
+
+
+    </script>
+
+    </body>
+    </html>

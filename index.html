@@ -37,11 +37,22 @@
     </div>
         <button onclick="getGraph()"> Click to graph words! </button>
         <div id="error"></div><br>
+
+    <form>
+      Enter maximum number of words you'd like to see: <br><br>
+      <input type="text" value="10" id="maxInput">
+      <br>
+      And for which chapter (enter all for whole book): 
+      <input type="text" value="4" id="chapInput">
+      <br>
+    </form>
+    <button onclick="showMax()"> Click for Max Words! </button>
     <div id="maxWords"></div>
   </div>
     
 
     <script>
+
     function getGraph() {
       document.getElementById('numWords').innerText = '';
 
@@ -79,17 +90,19 @@
             xLabels.push(current);
           }
 
-          var strArray = [];
+          function getArray() {
 
-          for (var t = 0; t < chapters.length; t++) {
-              strArray = strArray.concat(chapters[t]);
-          }
-          console.log(strArray);
+            var strArray = [];
+
+              for (var t = 0; t < chapters.length; t++) {
+                  strArray = strArray.concat(chapters[t]);
+              }
+
+              return strArray;
+      
+           }
+
           
-          var node = document.getElementById('output');
-          //node.innerText = "Chapter One array: " + chapters[1];
-          var wordCount = countWords(strArray);
-          printMaxNoCommon(wordCount.count, wordCount.words, 50);
 
           var wordInput = document.getElementById('wordInput').value;
           wordInput = wordInput.toString().toLowerCase().split(/, */);
@@ -156,6 +169,11 @@
         
       };
 
+function showMax() {
+    var strArray = getArray();
+    var wordCount = countWords(strArray);
+    printMaxNoCommon(wordCount.count, wordCount.words, 50);
+}
 
 
 

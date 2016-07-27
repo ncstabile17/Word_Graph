@@ -1,10 +1,7 @@
-import countWords from "string-handling";
-import makeGraph from "create-graph";
 
 function getGraph() {
       document.getElementById('numWords').innerText = '';
 
-      console.log("In getGraph...");
         var randomColorFactor = function() {
             return Math.round(Math.random() * 255);
         };
@@ -12,25 +9,24 @@ function getGraph() {
             return 'rgba(' + randomColorFactor() + ',' + randomColorFactor() + ',' + randomColorFactor() + ',' + (opacity || '.3') + ')';
         };
 
+        //get inputFile from user selection and read in as string
         var input = document.getElementById('inputFile').files[0];
-
         var reader = new FileReader();
         reader.onload = function(){
-          var str = reader.result;
+        var str = reader.result;
 
           //chapArray is an array where each element
-          //is an array containing the words in that chapter
-          //chapters is a string array with each word being its own element
+          //is an array containing the entire text in that chapter
+          //chapters is an array where each element
+          //is an array containing an array of the words in that chapter
           var chapArray = str.split(/CHAPTER/);
-          console.log(chapArray);
-          //console.log(chapArray);
           var chapters = new Array(chapArray.length);
           
           chapArray.forEach(function (element, index, array) {
             chapters[index] = element.toLowerCase().replace(/[^a-zA-Z '\n]/g, '').split(/\s+/);
           })
           
-
+          //create the labels for the x-axis
           var xLabels = [];
           for (var i = 0; i<chapArray.length; i++)
           {
@@ -39,19 +35,17 @@ function getGraph() {
           }
 
           
-          var node = document.getElementById('output');
-          //node.innerText = "Chapter One array: " + chapters[1];
-          var strArray = chapters[1];
           //var wordCount = countWords(strArray);
           //printMaxNoCommon(wordCount.count, wordCount.words);
 
+          //get user input for word to graph
           var wordInput = document.getElementById('wordInput').value;
           wordInput = wordInput.toString().toLowerCase().split(/, */);
 
-          console.log(wordInput);
           
           var datasets = [];
-
+          //for each input word, go through each chapter counting 
+          //the occurences of the word and push to count array
           wordInput.forEach(function(element, index, array) {
             var wordTotal = 0;
             var wordData = [];
@@ -68,12 +62,13 @@ function getGraph() {
               }
             })
 
+            //count total occurence of word
             for (var j = 0; j<wordData.length; j++) {
-
              var currNum = Number(wordData[j]);
              wordTotal += currNum;
             }
 
+            //make new dataset from wordData
             var newDataset = {
                 label: element,
                 borderColor: randomColor(0.4),
@@ -110,7 +105,5 @@ function getGraph() {
         }
         
       };
-
-
 
 

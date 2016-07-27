@@ -62,8 +62,6 @@ function getMaxNoCommon(inputArray, wordArray, num) {
     arrayCopy.splice(currPos, 1);
     wordCopy.splice(currPos, 1);
   }
-
-  
   return maxArray;
 }
 
@@ -83,10 +81,7 @@ function getMaxNum(inputArray, wordArray, num) {
     arrayCopy.splice(currPos, 1);
     wordCopy.splice(currPos, 1);
   }
-
-
   return maxArray;
-
 }
 
 function printMaxNum(inputArray, wordArray, num) {
@@ -99,8 +94,6 @@ function printMaxNum(inputArray, wordArray, num) {
     node.innerText += i+1 + ". '" + currMaxWord.word + "' with '" + currMaxWord.count + " uses\n";
 
   }
-
-
 }
 
 function printMaxNoCommon(inputArray, wordArray, num) {
@@ -113,9 +106,6 @@ function printMaxNoCommon(inputArray, wordArray, num) {
     node.innerText += i+1 + ". '" + currMaxWord.word + "' with '" + currMaxWord.count + " uses\n";
 
   }
-
-
-
 }
 
 

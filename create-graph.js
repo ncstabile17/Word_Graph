@@ -1,4 +1,9 @@
-function makeGraph(xLabels, datasets) {
+function makeGraph() {
+
+var graphObj = makeFunc();
+
+var xLabels = graphObj.xLabels;
+var datasets = graphObj.datasets;
 
         var config = {
             type: 'line',

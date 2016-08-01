@@ -1,5 +1,11 @@
-var commonWords = ["of","in","to","for","with","on","at","from","by","about","as","into","like","through","the","a","an","and","my","i","was","his","her","he","she","that","which","had","but","this","were","we","when","our"];
+//array of common words to exclude in outputting most frequent words used
+var commonWords = ["of","in","to","for","with","on","at","from","by","about","as","into","like","through","the","a","an","and","my","i","was","his","her","he","she","that","which","had","but","this","were","we","when","our","him","be","have","is","these","their","or","me","you","your","so","been","they","will","if","would","are"];
 
+/**
+ * Counts words in a particular chapter
+ * @param [String] stringArray
+ * @return {Object} countWords
+*/
 function countWords(stringArray){
 
   var words = [];
@@ -29,6 +35,7 @@ function countWords(stringArray){
   node2.innerText += element + " appeared: " + numCount + " times. \n"; 
 })
 */
+
 return {count: count, words: words };
 
 };
@@ -38,7 +45,7 @@ function getMaxOfArray(numArray) {
               return Math.max.apply(null, numArray);
             }
 
-function getMaxNoCommon(inputArray, wordArray) {
+function getMaxNoCommon(inputArray, wordArray, num) {
   var arrayCopy = inputArray.slice();
   var wordCopy = wordArray.slice();
 
@@ -51,130 +58,61 @@ function getMaxNoCommon(inputArray, wordArray) {
 
   }
 
-  var maxCount1 = getMaxOfArray(arrayCopy);
-  var pos1 = arrayCopy.indexOf(maxCount1);
-  var maxName1 = wordCopy[pos1];
-  var maxWord1 = {word: maxName1, count: maxCount1 };
-  arrayCopy.splice(pos1, 1);
-  wordCopy.splice(pos1, 1);
+  var maxArray = [];
 
-  var maxCount2 = getMaxOfArray(arrayCopy);
-  var pos2 = arrayCopy.indexOf(maxCount2);
-  var maxName2 = wordCopy[pos2];
-  var maxWord2 = {word: maxName2, count: maxCount2 };
-  arrayCopy.splice(pos2, 1);
-  wordCopy.splice(pos2, 1);
-
-  var maxCount3 = getMaxOfArray(arrayCopy);
-  var pos3 = arrayCopy.indexOf(maxCount3);
-  var maxName3 = wordCopy[pos3];
-  var maxWord3 = {word: maxName3, count: maxCount3 };
-  arrayCopy.splice(pos3, 1);
-  wordCopy.splice(pos3, 1);
-
-  var maxCount4 = getMaxOfArray(arrayCopy);
-  var pos4 = arrayCopy.indexOf(maxCount4);
-  var maxName4 = wordCopy[pos4];
-  var maxWord4 = {word: maxName4, count: maxCount4 };
-  arrayCopy.splice(pos4, 1);
-  wordCopy.splice(pos4, 1);
-
-  var maxCount5 = getMaxOfArray(arrayCopy);
-  var pos5 = arrayCopy.indexOf(maxCount5);
-  var maxName5 = wordCopy[pos5];
-  var maxWord5 = {word: maxName5, count: maxCount5 };
-  arrayCopy.splice(pos5, 1);
-  wordCopy.splice(pos5, 1);
-
-  var maxFive = [maxWord1, maxWord2, maxWord3, maxWord4, maxWord5];
-
-  return maxFive;
+  for (var i = 0; i<num; i++) {
+    var currMaxCount = getMaxOfArray(arrayCopy);
+    var currPos = arrayCopy.indexOf(currMaxCount);
+    var currMaxName = wordCopy[currPos];
+    var currMax = {word: currMaxName, count: currMaxCount};
+    maxArray.push(currMax);
+    arrayCopy.splice(currPos, 1);
+    wordCopy.splice(currPos, 1);
+  }
+  return maxArray;
 }
 
 
-function getMaxFive(inputArray, wordArray) {
+function getMaxNum(inputArray, wordArray, num) {
   var arrayCopy = inputArray.slice();
   var wordCopy = wordArray.slice();
 
-  var maxCount1 = getMaxOfArray(arrayCopy);
-  var pos1 = arrayCopy.indexOf(maxCount1);
-  var maxName1 = wordCopy[pos1];
-  var maxWord1 = {word: maxName1, count: maxCount1 };
-  arrayCopy.splice(pos1, 1);
-  wordCopy.splice(pos1, 1);
+  var maxArray = [];
 
-  var maxCount2 = getMaxOfArray(arrayCopy);
-  var pos2 = arrayCopy.indexOf(maxCount2);
-  var maxName2 = wordCopy[pos2];
-  var maxWord2 = {word: maxName2, count: maxCount2 };
-  arrayCopy.splice(pos2, 1);
-  wordCopy.splice(pos2, 1);
-
-  var maxCount3 = getMaxOfArray(arrayCopy);
-  var pos3 = arrayCopy.indexOf(maxCount3);
-  var maxName3 = wordCopy[pos3];
-  var maxWord3 = {word: maxName3, count: maxCount3 };
-  arrayCopy.splice(pos3, 1);
-  wordCopy.splice(pos3, 1);
-
-  var maxCount4 = getMaxOfArray(arrayCopy);
-  var pos4 = arrayCopy.indexOf(maxCount4);
-  var maxName4 = wordCopy[pos4];
-  var maxWord4 = {word: maxName4, count: maxCount4 };
-  arrayCopy.splice(pos4, 1);
-  wordCopy.splice(pos4, 1);
-
-  var maxCount5 = getMaxOfArray(arrayCopy);
-  var pos5 = arrayCopy.indexOf(maxCount5);
-  var maxName5 = wordCopy[pos5];
-  var maxWord5 = {word: maxName5, count: maxCount5 };
-  arrayCopy.splice(pos5, 1);
-  wordCopy.splice(pos5, 1);
-
-  var maxFive = [maxWord1, maxWord2, maxWord3, maxWord4, maxWord5];
-
-  return maxFive;
-
+  for (var i = 0; i<num; i++) {
+    var currMaxCount = getMaxOfArray(arrayCopy);
+    var currPos = arrayCopy.indexOf(currMaxCount);
+    var currMaxName = wordCopy[currPos];
+    var currMax = {word: currMaxName, count: currMaxCount};
+    maxArray.push(currMax);
+    arrayCopy.splice(currPos, 1);
+    wordCopy.splice(currPos, 1);
+  }
+  return maxArray;
 }
 
-function printMaxFive(inputArray, wordArray) {
-  var maxFive = getMaxFive(inputArray, wordArray);
-
-  var maxWord1 = maxFive[0];
-  var maxWord2 = maxFive[1];
-  var maxWord3 = maxFive[2];
-  var maxWord4 = maxFive[3];
-  var maxWord5 = maxFive[4];
-
+function printMaxNum(inputArray, wordArray, num) {
+ 
+  var allMax = getMaxFive(inputArray, wordArray, num);
   var node = document.getElementById('maxWords');
-  node.innerText = "These words appeared most frequently:\n  1. '" + maxWord1.word + "' with " + maxWord1.count + " uses\n" +
-  "2. '" + maxWord2.word + "' with " + maxWord2.count + " uses\n" +
-  "3. '" + maxWord3.word + "' with " + maxWord3.count + " uses\n" +
-  "4. '" + maxWord4.word + "' with " + maxWord4.count + " uses\n" +
-  "5. '" + maxWord5.word + "' with " + maxWord5.count + " uses\n";
 
+  for (var i = 0; i<allMax.length; i++) {
+    var currMaxWord = allMax[i];
+    node.innerText += i+1 + ". '" + currMaxWord.word + "' with '" + currMaxWord.count + " uses\n";
 
-
+  }
 }
 
-function printMaxNoCommon(inputArray, wordArray) {
-  var maxFive = getMaxNoCommon(inputArray, wordArray);
+function printMaxNoCommon(inputArray, wordArray, num) {
 
-  var maxWord1 = maxFive[0];
-  var maxWord2 = maxFive[1];
-  var maxWord3 = maxFive[2];
-  var maxWord4 = maxFive[3];
-  var maxWord5 = maxFive[4];
-
+  var allMax = getMaxNoCommon(inputArray, wordArray, num);
   var node = document.getElementById('maxWords');
-  node.innerText = "These words appeared most frequently:\n  1. '" + maxWord1.word + "' with " + maxWord1.count + " uses\n" +
-  "2. '" + maxWord2.word + "' with " + maxWord2.count + " uses\n" +
-  "3. '" + maxWord3.word + "' with " + maxWord3.count + " uses\n" +
-  "4. '" + maxWord4.word + "' with " + maxWord4.count + " uses\n" +
-  "5. '" + maxWord5.word + "' with " + maxWord5.count + " uses\n";
 
+  for (var i = 0; i<allMax.length; i++) {
+    var currMaxWord = allMax[i];
+    node.innerText += i+1 + ". '" + currMaxWord.word + "' with '" + currMaxWord.count + " uses\n";
 
-
+  }
 }
 
 

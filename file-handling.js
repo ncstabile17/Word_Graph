@@ -1,6 +1,7 @@
 
 function getGraph() {
       document.getElementById('numWords').innerText = '';
+      document.getElementById('correlation').innerText = '';
 
         //Used from Chart.js to create colors for graph
         var randomColorFactor = function() {
@@ -86,6 +87,7 @@ function getGraph() {
             //call makeGraph function from create-graph.js to make
             //graph from given x-axis labels and datasets
             makeGraph(xLabels, datasets);
+            getCorrel(datasets);
 
           
         };

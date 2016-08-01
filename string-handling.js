@@ -45,8 +45,8 @@ function getMaxOfArray(numArray) {
               return Math.max.apply(null, numArray);
             }
 
-function getMaxNoCommon(inputArray, wordArray, num) {
-  var arrayCopy = inputArray.slice();
+function getMaxNoCommon(countArray, wordArray, num) {
+  var arrayCopy = countArray.slice();
   var wordCopy = wordArray.slice();
 
   for (var i = 0; i<commonWords.length+1; i++)
@@ -103,9 +103,10 @@ function printMaxNum(inputArray, wordArray, num) {
   }
 }
 
-function printMaxNoCommon(inputArray, wordArray, num) {
+function printMaxNoCommon(countArray, wordArray, num) {
 
-  var allMax = getMaxNoCommon(inputArray, wordArray, num);
+  var allMax = getMaxNoCommon(countArray, wordArray, num);
+  console.log(allMax);
   var node = document.getElementById('maxWords');
 
   for (var i = 0; i<allMax.length; i++) {

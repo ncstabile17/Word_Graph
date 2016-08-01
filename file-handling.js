@@ -2,6 +2,7 @@
 function getGraph() {
       document.getElementById('numWords').innerText = '';
       document.getElementById('correlation').innerText = '';
+      document.getElementById('maxWords').innerText = '';
 
         //Used from Chart.js to create colors for graph
         var randomColorFactor = function() {
@@ -23,7 +24,10 @@ function getGraph() {
           //is an array containing an array of the words in that chapter
           var chapArray = str.split(/CHAPTER/);
           var chapters = new Array(chapArray.length);
-          
+
+          var paraArray = [];
+            paraArray = str.toLowerCase().replace(/[^a-zA-Z '\n]/g, '').split(/\n{2}/);
+                      
           chapArray.forEach(function (element, index, array) {
             chapters[index] = element.toLowerCase().replace(/[^a-zA-Z '\n]/g, '').split(/\s+/);
           })
@@ -88,6 +92,7 @@ function getGraph() {
             //graph from given x-axis labels and datasets
             makeGraph(xLabels, datasets);
             getCorrel(datasets);
+            getSamePara(wordInput, paraArray);
 
           
         };

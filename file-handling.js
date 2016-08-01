@@ -2,6 +2,7 @@
 function getGraph() {
       document.getElementById('numWords').innerText = '';
 
+        //Used from Chart.js to create colors for graph
         var randomColorFactor = function() {
             return Math.round(Math.random() * 255);
         };
@@ -34,16 +35,12 @@ function getGraph() {
             xLabels.push(current);
           }
 
-          
-          //var wordCount = countWords(strArray);
-          //printMaxNoCommon(wordCount.count, wordCount.words);
-
           //get user input for word to graph
           var wordInput = document.getElementById('wordInput').value;
           wordInput = wordInput.toString().toLowerCase().split(/, */);
-
           
           var datasets = [];
+
           //for each input word, go through each chapter counting 
           //the occurences of the word and push to count array
           wordInput.forEach(function(element, index, array) {
@@ -80,20 +77,19 @@ function getGraph() {
             datasets.push(newDataset);
             console.log(datasets);
 
-              document.getElementById('numWords').innerText += element + ": " + wordTotal + " appearances\n";
+            document.getElementById('numWords').innerText += element + ": " + wordTotal + " appearances\n";
               
               
 
           })
 
-
+            //call makeGraph function from create-graph.js to make
+            //graph from given x-axis labels and datasets
             makeGraph(xLabels, datasets);
 
           
-          
-
-          
         };
+
         if (input != null) {
           document.getElementById('frankenimage').style.height=0;
           reader.readAsText(input);

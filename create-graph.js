@@ -65,9 +65,7 @@ function makeGraph(xLabels, datasets) {
         };
         
             var ctx = document.getElementById("canvas").getContext("2d");
-            //ctx.translate(500,500);
             window.myLine = new Chart(ctx, config);
-           // ctx.translate(0,100);
             window.myLine.update();
         
 

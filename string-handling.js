@@ -1,5 +1,11 @@
+//array of common words to exclude in outputting most frequent words used
 var commonWords = ["of","in","to","for","with","on","at","from","by","about","as","into","like","through","the","a","an","and","my","i","was","his","her","he","she","that","which","had","but","this","were","we","when","our","him","be","have","is","these","their","or","me","you","your","so","been","they","will","if","would","are"];
 
+/**
+ * Counts words in a particular chapter
+ * @param [String] stringArray
+ * @return {Object} countWords
+*/
 function countWords(stringArray){
 
   var words = [];
@@ -29,6 +35,7 @@ function countWords(stringArray){
   node2.innerText += element + " appeared: " + numCount + " times. \n"; 
 })
 */
+
 return {count: count, words: words };
 
 };

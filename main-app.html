@@ -18,6 +18,15 @@
       margin-left: 165px;
     }
 
+    .button {
+      background-color: #DDEEEE;
+      color: black;
+      padding: 10px 25px;
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
     canvas{
         -moz-user-select: none;
         -webkit-user-select: none;
@@ -73,18 +82,9 @@
     </form>
     <div id="numWords"></div><br>
     </div>
-        <button onclick="getGraph()"> Click to graph words! </button>
+        <button class="button" onclick="getGraph()"> Click to graph words! </button>
         <div id="error"></div>
   </div>
-    
-
-    <script>
-    
-
- //window.onload = makeGraph;
-
-
-    </script>
 
     </body>
     </html>

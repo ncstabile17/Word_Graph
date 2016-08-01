@@ -1,5 +1,5 @@
 function getCorrel(datasets) {
-	document.getElementById('correlation').innerText = "Correlation coefficients: \n"; 
+	document.getElementById('correlation').innerText = "Pearson Correlation Coefficients: \n"; 
 	for (var i = 0; i<datasets.length; i++) {
 		for(var j = i+1; j<datasets.length; j++) {
 			var xArray = datasets[i].data;

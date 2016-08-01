@@ -13,6 +13,11 @@
       margin: 0px auto;
       text-align: center;
     }
+    p.one {
+      margin-right: 165px;
+      margin-left: 165px;
+    }
+
     canvas{
         -moz-user-select: none;
         -webkit-user-select: none;
@@ -54,6 +59,10 @@
   <div class="center">
     <img src="frankenimage.jpeg" id="frankenimage" height="300" alt="frankenimage"> <br>
     <h1> Welcome to the Frankenstein Word Graph! </h1><br>
+    <p class="one"> This application allows you to select a book, enter one or more words
+      and see a graph of how these words are used throughout the book. Hopefully this tool will provide you with a better understanding of the book and will be useful in developing a critical analysis of the text. While this project was designed for use with <i> Frankenstein</i>, it will work with any text file
+      containing chapters. </p><br>
+
     <p> To begin, please select a text file of a book containing chapters: <br> </p>
     <input type='file' accept='text/plain' id="inputFile" multiple><br> <br>
     <div>
